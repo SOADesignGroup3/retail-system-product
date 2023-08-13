@@ -51,42 +51,6 @@ export class ProductService {
     return { id: product.id, error: null, status: HttpStatus.OK };
   }
 
-  //   public async decreaseStock({
-  //     id,
-  //     orderId,
-  //   }: DecreaseStockRequestDto): Promise<DecreaseStockResponse> {
-  //     console.log('decreasing stock data');
-  //     const product: Product = await this.repository.findOne({
-  //       select: ['id', 'stock'],
-  //       where: { id },
-  //     });
-
-  //     if (!product) {
-  //       return { error: ['Product not found'], status: HttpStatus.NOT_FOUND };
-  //     } else if (product.stock <= 0) {
-  //       return { error: ['Stock too low'], status: HttpStatus.CONFLICT };
-  //     }
-
-  //     const isAlreadyDecreased: number = await this.decreaseLogRepository.count({
-  //       where: { orderId },
-  //     });
-
-  //     if (isAlreadyDecreased) {
-  //       // Idempotence
-  //       return {
-  //         error: ['Stock already decreased'],
-  //         status: HttpStatus.CONFLICT,
-  //       };
-  //     }
-  //     console.log('...decreasing');
-  //     await this.repository.update(product.id, { stock: product.stock - 1 });
-  //     console.log('...decreasing');
-  //     await this.decreaseLogRepository.insert({ product, orderId });
-  //     console.log('decrease sucessful ');
-
-  //     return { error: null, status: HttpStatus.OK };
-  //   }
-
   public async decreaseStock({
     id,
   }: DecreaseStockRequestDto): Promise<DecreaseStockResponse> {
