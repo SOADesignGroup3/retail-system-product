@@ -8,9 +8,6 @@ import { ProductModule } from './product/product.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      //host: 'localhost',
-      //port: 5432,
-      //database: 'micro_product',
       url: 'postgres://vipmjbjk:B8JKwclBvzcM8-KEaOtgbcNr1tEZZOL4@trumpet.db.elephantsql.com/vipmjbjk',
       username: 'vipmjbjk ',
       password: 'B8JKwclBvzcM8-KEaOtgbcNr1tEZZOL4',
