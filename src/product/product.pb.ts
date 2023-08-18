@@ -15,6 +15,7 @@ export interface CreateProductResponse {
   status: number;
   error: string[];
   id: number;
+  message: string;
 }
 
 export interface FindOneData {
@@ -33,6 +34,7 @@ export interface FindOneResponse {
   status: number;
   error: string[];
   data: FindOneData | undefined;
+  message: string;
 }
 
 export interface DecreaseStockRequest {
@@ -42,6 +44,7 @@ export interface DecreaseStockRequest {
 export interface DecreaseStockResponse {
   status: number;
   error: string[];
+  message: string;
 }
 
 export const PRODUCT_PACKAGE_NAME = 'product';

@@ -30,10 +30,16 @@ export class ProductService {
         data: null,
         error: ['Product not found'],
         status: HttpStatus.NOT_FOUND,
+        message: 'Product not found',
       };
     }
 
-    return { data: product, error: null, status: HttpStatus.OK };
+    return {
+      data: product,
+      error: null,
+      status: HttpStatus.OK,
+      message: 'Product found successfully',
+    };
   }
 
   public async createProduct(
@@ -48,7 +54,12 @@ export class ProductService {
 
     await this.repository.save(product);
 
-    return { id: product.id, error: null, status: HttpStatus.OK };
+    return {
+      id: product.id,
+      error: null,
+      status: HttpStatus.OK,
+      message: 'Product created successfully',
+    };
   }
 
   public async decreaseStock({
@@ -61,9 +72,17 @@ export class ProductService {
     });
 
     if (!product) {
-      return { error: ['Product not found'], status: HttpStatus.NOT_FOUND };
+      return {
+        error: ['Product not found'],
+        status: HttpStatus.NOT_FOUND,
+        message: 'Product not found',
+      };
     } else if (product.stock <= 0) {
-      return { error: ['Stock too low'], status: HttpStatus.CONFLICT };
+      return {
+        error: ['Stock too low'],
+        status: HttpStatus.CONFLICT,
+        message: 'Stock too low',
+      };
     }
 
     console.log('...decreasing');
@@ -72,6 +91,10 @@ export class ProductService {
     // No need to insert decrease log, as orderId is not used
 
     console.log('decrease successful');
-    return { error: null, status: HttpStatus.OK };
+    return {
+      error: null,
+      status: HttpStatus.OK,
+      message: 'Stock decreased successfully',
+    };
   }
 }
